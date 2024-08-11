@@ -27,6 +27,10 @@
   html {
     font-size: 50%;
   }
+  body {
+    flex-direction: column;
+    height: 200vh;
+  }
 }
 
 /* ********************************  */
