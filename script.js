@@ -1,20 +1,5 @@
 'use strict';
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
@@ -93,6 +78,9 @@ class App {
   #workouts = [];
   constructor() {
     this._getPosition();
+    // Get data from local storage
+    this._getLocalStorage();
+    // Attach event handlers
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
@@ -123,6 +111,9 @@ class App {
     //   .bindPopup('A pretty CSS popup.<br> Easily customizable.')
     //   .openPopup();
     this.#map.on('click', this._showForm.bind(this));
+    this.#workouts.forEach(work => {
+      this._renderWorkoutMarker(work);
+    });
   }
   _showForm(mapE) {
     this.#mapEvent = mapE;
@@ -209,8 +200,8 @@ class App {
     //Hide form + clear input fields
     this._hideForm();
     // Clear Input Fields
-
-    //To Display the marker
+    //Set Local storage to all workouts
+    this._setLocalStorage();
   }
   _renderWorkoutMarker(workout) {
     L.marker(workout.coords)
@@ -287,6 +278,21 @@ class App {
       },
     });
     workout.click();
+  }
+  _setLocalStorage() {
+    localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+  }
+  _getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem('workouts'));
+    if (!data) return;
+    this.#workouts = data;
+    this.#workouts.forEach(work => {
+      this._renderWorkout(work);
+    });
+  }
+  reset() {
+    localStorage.removeItem('workouts');
+    location.reload();
   }
 }
 
