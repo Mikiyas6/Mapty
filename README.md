@@ -14,7 +14,7 @@ Thanks for checking out My Fifth Project Involving Javascript
 ### Links
 
 - Solution URL: [Github-link](https://github.com/Mikiyas6/Mapty)
-- Live Site URL: [Page-link](https://github.com/Mikiyas6/Mapty/deployments/github-pages)
+- Live Site URL: [Page-link](https://mikiyas6.github.io/Mapty/)
 
 ### Built with
 
