@@ -9,7 +9,7 @@
 
 ## 📸 Screenshot
 
-![Steps Component]()
+![Steps Component](https://github.com/Mikiyas6/Mapty/blob/master/mapty%20__%20Map%20your%20workouts.png)
 
 
 - Solution URL: [Github-link](https://github.com/Mikiyas6/Mapty)
